@@ -164,7 +164,7 @@ def load_pypirc_repos() -> dict:
             return {}
         names = []
         if cp.has_section("distutils") and cp.has_option("distutils", "index-servers"):
-            names = [n.strip() for n in cp.get("distutils", "index-servers").splitlines() if n.strip()]
+            names = [n.strip() for n in cp.get("distutils", "index-servers").split() if n.strip()]
         repos = {n: (cp.get(n, "repository", fallback="").strip() or "(no repository URL)") for n in names}
         if repos:
             return repos
