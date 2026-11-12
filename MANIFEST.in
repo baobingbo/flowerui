@@ -4,6 +4,7 @@ include pyproject.toml
 recursive-include flowerui/static *
 recursive-include flowerui/themes *.css
 exclude flowerui.runtime.toml
+exclude .pypirc
 exclude flowerui.db
 exclude flower.state*
 prune logs

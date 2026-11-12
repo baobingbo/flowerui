@@ -43,6 +43,9 @@ flowerui.runtime.toml
 .env.*
 !.env.example
 
+# PyPI 上传凭据（含真实 token，等同密码，禁止入库！一旦提交即泄露）
+.pypirc
+
 # ---------- 编辑器 / 系统 / OS ----------
 .idea/
 .vscode/
