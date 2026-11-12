@@ -1,0 +1,55 @@
+# ===================== FlowerUI（flowerui 后端包）.gitignore =====================
+# 核心原则：源码 / 配置 / 文档 / 内置主题与前端静态资源入库；
+# 依赖、构建产物、运行时产物、含密钥的运行时配置 一律不入库。
+
+# ---------- Python 字节码 / 缓存 ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ---------- 虚拟环境 ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- 构建 / 打包产物（whl / sdist 不入库，由 CI 构建） ----------
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# ---------- 测试 / 覆盖率 ----------
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ---------- 运行时产物（manage.sh / 服务生成，禁止入库） ----------
+logs/
+*.log
+flower.state*
+*.db
+*.sqlite3
+
+# ---------- 密钥 / 运行时配置（含 broker 明文密码，禁止入库） ----------
+# flowerui.runtime.toml 由界面改动自动生成，可能含 broker 密码等敏感信息
+flowerui.runtime.toml
+*.runtime.toml
+.env
+.env.*
+!.env.example
+
+# ---------- 编辑器 / 系统 / OS ----------
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ---------- uv 锁文件（按项目约定 uv.lock 随代码提交，此处不忽略） ----------
+# uv.lock

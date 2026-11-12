@@ -1,0 +1,38 @@
+# FlowerUI 后端依赖
+# 目标运行环境：Python 3.7.9（uv 创建的 backend/.venv）
+# 安装（推荐）：uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+# 安装（pip）：  .venv/Scripts/python.exe -m pip install -r requirements.txt
+#
+# 说明：不固定版本号，由 uv 针对当前解释器自动解析「各自的最新兼容版本」。
+# 原因：写死版本在 py3.7 下无解，例如 python-multipart 0.0.32 要求 >=3.10、
+#       fastapi 0.109.x / celery 5.3.x / prometheus-client 0.20+ 要求 >=3.8。
+# 唯一上界 pydantic<2：代码使用 v1 的 BaseSettings
+# 唯一上界 importlib-metadata<5：kombu 5.2.4 依赖 entry_points().get()，
+#       该接口在 5.0+ 被移除，否则 celery.events 导入报
+#       AttributeError: 'EntryPoints' object has no attribute 'get'
+
+# Web 框架
+fastapi
+uvicorn[standard]
+python-multipart
+websockets
+
+# 配置与校验（v1 自带 BaseSettings；v2 已移出到 pydantic-settings）
+pydantic<2
+importlib-metadata<5
+
+# Celery 生态
+celery
+
+# Broker 驱动
+redis
+
+# 指标与鉴权
+prometheus-client
+PyJWT
+
+# HTTP 客户端（RabbitMQ management API / 健康探测）
+httpx
+
+# TOML 配置文件解析器
+toml
